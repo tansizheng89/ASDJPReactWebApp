@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/enhl269/asdadprojREACTJS.git/static/css/main.1635e87c.chunk.css",
+    "main.js": "/enhl269/asdadprojREACTJS.git/static/js/main.c51ed7e1.chunk.js",
+    "main.js.map": "/enhl269/asdadprojREACTJS.git/static/js/main.c51ed7e1.chunk.js.map",
+    "runtime-main.js": "/enhl269/asdadprojREACTJS.git/static/js/runtime-main.11408829.js",
+    "runtime-main.js.map": "/enhl269/asdadprojREACTJS.git/static/js/runtime-main.11408829.js.map",
+    "static/css/2.92200efa.chunk.css": "/enhl269/asdadprojREACTJS.git/static/css/2.92200efa.chunk.css",
+    "static/js/2.135b5063.chunk.js": "/enhl269/asdadprojREACTJS.git/static/js/2.135b5063.chunk.js",
+    "static/js/2.135b5063.chunk.js.map": "/enhl269/asdadprojREACTJS.git/static/js/2.135b5063.chunk.js.map",
+    "static/js/3.09153abd.chunk.js": "/enhl269/asdadprojREACTJS.git/static/js/3.09153abd.chunk.js",
+    "static/js/3.09153abd.chunk.js.map": "/enhl269/asdadprojREACTJS.git/static/js/3.09153abd.chunk.js.map",
+    "index.html": "/enhl269/asdadprojREACTJS.git/index.html",
+    "static/css/2.92200efa.chunk.css.map": "/enhl269/asdadprojREACTJS.git/static/css/2.92200efa.chunk.css.map",
+    "static/css/main.1635e87c.chunk.css.map": "/enhl269/asdadprojREACTJS.git/static/css/main.1635e87c.chunk.css.map",
+    "static/js/2.135b5063.chunk.js.LICENSE.txt": "/enhl269/asdadprojREACTJS.git/static/js/2.135b5063.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.11408829.js",
+    "static/css/2.92200efa.chunk.css",
+    "static/js/2.135b5063.chunk.js",
+    "static/css/main.1635e87c.chunk.css",
+    "static/js/main.c51ed7e1.chunk.js"
+  ]
+}
