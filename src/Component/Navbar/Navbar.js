@@ -23,6 +23,7 @@ import Login from '../Login';
 import Home from '../Home/Home';
 import NavDropdown from 'react-bootstrap/NavDropdown'
 import Nav from 'react-bootstrap/Nav'
+import Avatar from '@material-ui/core/Avatar';
 
 
 export default function Navbar() {
@@ -30,8 +31,10 @@ export default function Navbar() {
   <img src={logoUrl} alt="Tesla" />
   //declare state. false to full menu(screen less 500px)
   const [toggleMenu, setToggleMenu] = useState(false)
-
+  const image = localStorage.getItem("image")
+  const [cimage, setImage] = useState(null)
   const role = localStorage.getItem('roles')
+  
   //const user = JSON.parse(localStorage.getItem('user'))
   const [cuser, setUser] = useState(null)
   const [crole, setRole] = useState(null)
@@ -54,6 +57,9 @@ export default function Navbar() {
 
   useEffect(() => {
     setRole(role)
+  }, [])
+  useEffect(() => {
+    setImage(image)
   }, [])
 
 
@@ -114,7 +120,8 @@ export default function Navbar() {
             {crole == null ? <Nav.Link href="/Login" id="nav-dropdown">Login</Nav.Link> : ""}
             {crole !== null ? <Nav.Link href="/EditUser" id="nav-dropdown">Edit Profile</Nav.Link> : ""}
             {crole !== null ? <Nav.Link href="/logout" id="nav-dropdown">Logout</Nav.Link> : ""}
-           
+           &nbsp;&nbsp;&nbsp;&nbsp;
+            {cimage!==null ? <Avatar alt="images" src={`data:image/jpeg;base64, ${cimage}`}/> :""}
           </Nav>
 
         )}

@@ -25,7 +25,8 @@ function processRefreshToken(){
 class DataService {
   getAllJobs() {
     // this is the changes I made. Might need to change back 
-    return axios.get("http://localhost:8080/api/webuser/job/list");
+    //return axios.get("http://localhost:8080/api/webuser/job/list");
+    return axios.get("http://3.85.221.169:8080/webapp/api/webuser/job/list");
   }
   
   getUserUseRefreshToken(){

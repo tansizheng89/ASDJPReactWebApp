@@ -17,6 +17,7 @@ import CheckIcon from '@material-ui/icons/Check';
 
 
 import AuthService from "../_helpersvc/authservice";
+import UserService from "../Services/UserService";
 
 const useStyles = theme => ({
   paper: {
@@ -113,9 +114,14 @@ class Login extends Component {
       localStorage.setItem("username", response.data.username);
       this.setState({ done: true });
       // this.props.history.push("/AllJobsList");
+      
+      UserService.getAvatarFiles(response.data.username).then(resp=>{
+        localStorage.setItem("image",resp.data);
+      }).catch(e => {
+        console.log(e);
+      });
       let timer = null;
       timer = setTimeout(()=>window.location.href = '/AllJobsList',1000);
-
     })
       .catch(e => {
         console.log(e);
