@@ -151,7 +151,7 @@ class Login extends Component {
           </Typography>
           
 
-          <form className={classes.form} noValidate
+          <form className={classes.form} Validate
             onSubmit={this.handleLogin}
             ref={c => {
               this.form = c;

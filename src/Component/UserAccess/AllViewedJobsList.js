@@ -11,11 +11,12 @@ import CardContent from '@material-ui/core/CardContent';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { CardHeader, Fab } from "@material-ui/core";
+import VisibilityIcon from '@material-ui/icons/Visibility';
 
 const useStyles = theme => ({
   header:{
-    marginTop: '60px',
-    position:'fixed',
+    marginTop: theme.spacing(15),
+    display: 'flex',
   },
   icon: {
     marginRight: theme.spacing(2),
@@ -70,10 +71,12 @@ class AllViewedJobList extends Component {
 
     return(
       <div>
+      <div className={classes.header}>
 
-      <div className="header"> 
-        <h3>Viewed Jobs</h3>  
-      </div>
+      <Container maxWidth="lg">
+        <Typography variant="h3">Viewed Jobs&nbsp;&nbsp;<VisibilityIcon/></Typography>
+        </Container>
+        </div>
 
       <Container className={classes.cardGrid} maxWidth="md">
       <CssBaseline />
@@ -109,8 +112,8 @@ class AllViewedJobList extends Component {
           </div>
         </Container>
         
-  
-      </div>
+        </div>
+
 
     );
   
