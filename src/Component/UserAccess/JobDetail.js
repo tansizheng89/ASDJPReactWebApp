@@ -159,9 +159,7 @@ class JobDetail extends Component {
       });
   }
 
-  bkalert() {
-    alert("Bookmarked!");
-  }
+
 
   render() {
     const { job } = this.state;
@@ -186,7 +184,7 @@ class JobDetail extends Component {
                 className={classes.fab}
                 aria-label="bookmark"
                 color="primary"
-                onClick={(e) => this.addBookmark(job.jobid), this.bkalert}>
+                onClick={(e) => this.addBookmark(job.jobid)}>
                 <BookmarkRoundedIcon />
               </Fab>
               :""}
