@@ -5,6 +5,7 @@ import { ReactComponent as Logo } from '../../images/justify.svg';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import ApprovedReviewList from '../AdminAccess/ApprovedReviewList'
 import RejectedReviewList from '../AdminAccess/RejectedReviewList'
+import ReportedReviewList from '../AdminAccess/ReportedReviewList'
 import ApprovedApplicantList from '../AdminAccess/ApprovedApplicantList'
 import RejectedApplicantList from '../AdminAccess/BlockedApplicantList'
 import AllJobsList from '../UserAccess/AllJobsList'
@@ -81,15 +82,15 @@ export default function Navbar() {
              </div>
 
             <Nav.Link href="/Home" id="nav-dropdown" >Home</Nav.Link>
-            <NavDropdown
+            {/*<NavDropdown
               variant="secondary"
               title="Job"
               id="nav-dropdown"
             >
-              <NavDropdown.Item href="/AllJobsList" id="nav-items" >All Jobs</NavDropdown.Item>
+           <NavDropdown.Item href="/AllJobsList" id="nav-items" >All Jobs</NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item href="/JobCategoryList" id="nav-items">Job Categories</NavDropdown.Item>
-            </NavDropdown>
+            </NavDropdown> */}
             {(crole === '[APPLICANT]') ? <Nav.Link href="/AllBookmarkJobList" id="nav-dropdown" >Bookmarks</Nav.Link> : ""}
             {(crole === '[APPLICANT]') ? <Nav.Link href="/AllViewedJobsList" id="nav-dropdown" >Viewed</Nav.Link> : ""}
             {(crole === '[ADMIN]') ?
@@ -113,6 +114,8 @@ export default function Navbar() {
                 <NavDropdown.Item href="/ApprovedReviewList" id="nav-items" >Approved Reviews</NavDropdown.Item>
                 <NavDropdown.Divider />
                 <NavDropdown.Item href="/RejectedReviewList" id="nav-items" >Rejected Reviews</NavDropdown.Item>
+                <NavDropdown.Divider />
+                <NavDropdown.Item href="/ReportedReviewList" id="nav-items" >Reported Reviews</NavDropdown.Item>
               </NavDropdown>
               : ""}
             {(crole === '[ADMIN]') ? <Nav.Link href="/UserList" id="nav-dropdown">All Users</Nav.Link> : ""}
@@ -133,6 +136,7 @@ export default function Navbar() {
         <Route exact path='/Home' component={Home} />
         <Route exact path='/ApprovedReviewList' component={ApprovedReviewList} />
         <Route exact path='/RejectedReviewList' component={RejectedReviewList} />
+        <Route exact path='/ReportedReviewList' component={ReportedReviewList} />
         <Route exact path='/ApprovedApplicantList' component={ApprovedApplicantList} />
         <Route exact path='/RejectedApplicantList' component={RejectedApplicantList} />
         <Route exact path='/AllJobsList' component={AllJobsList} />

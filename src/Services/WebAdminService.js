@@ -48,6 +48,9 @@ class DataService {
   getBlockedReviews() {
     return axios.get(STUDENT_API_BASE_URL+"/list/reviews/rejected",token());
   }
+  getReportedReviews() {
+    return axios.get(STUDENT_API_BASE_URL+"/list/reviews/reported",token());
+  }
   updateReview(id, reviewStatus) {
     return axios.get(STUDENT_API_BASE_URL+"/list/reviews/"+id+"/"+reviewStatus,token());
   }

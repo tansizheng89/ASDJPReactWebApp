@@ -121,7 +121,7 @@ class Login extends Component {
         console.log(e);
       });
       let timer = null;
-      timer = setTimeout(()=>window.location.href = '/AllJobsList',1000);
+      timer = setTimeout(()=>window.location.href = '/ApprovedApplicantList',1000);
     })
       .catch(e => {
         console.log(e);
