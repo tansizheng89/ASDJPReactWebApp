@@ -13,6 +13,8 @@ import { green } from '@material-ui/core/colors';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Fab from '@material-ui/core/Fab';
 import CheckIcon from '@material-ui/icons/Check';
+import Alert from '@material-ui/lab/Alert';
+import MoodBadIcon from '@material-ui/icons/MoodBad';
 
 
 
@@ -72,6 +74,7 @@ class Login extends Component {
       username: "",
       password: "",
       done: false,
+      loginStatus:false,
     };
 
     
@@ -125,6 +128,8 @@ class Login extends Component {
     })
       .catch(e => {
         console.log(e);
+        if(e.response.status===401 || e.response.status===403){
+          this.setState({loginStatus:true});
       });
 
   }
@@ -140,6 +145,7 @@ class Login extends Component {
       <Container maxWidth="xs">
         <CssBaseline />
         <div className={classes.paper}>
+        {this.state.loginStatus?<Alert severity="error">Something went wrong. Please try again <MoodBadIcon/></Alert>:null}
             <div className={classes.wrapper}>
               <Fab aria-label="save" color="primary">
               <Avatar className={classes.avatar} >{this.state.done ?   <CheckIcon  /> : <LockOutlinedIcon />}</Avatar >
@@ -151,7 +157,7 @@ class Login extends Component {
           </Typography>
           
 
-          <form className={classes.form} Validate
+          <form className={classes.form} noValidate
             onSubmit={this.handleLogin}
             ref={c => {
               this.form = c;
