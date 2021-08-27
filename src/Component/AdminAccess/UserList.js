@@ -82,7 +82,7 @@ class UserList extends Component {
           UserDataService.getUserUseRefreshToken();
             // this.refreshList();
             this.componentDidMount();
-            console.log(e.resp.data);
+            console.log(e);
         }
       });
   }

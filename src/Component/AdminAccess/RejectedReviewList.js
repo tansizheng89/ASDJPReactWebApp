@@ -65,7 +65,7 @@ class RejectedReviewList extends Component {
         DataService.getUserUseRefreshToken();
           };
       console.log(e);
-      window.location.reload();
+      window.location.href='/Login';
     });
   }
 
@@ -99,16 +99,11 @@ class RejectedReviewList extends Component {
               <Grid item key={(review.id)} xs={12} sm={6} md={4}>
                 <Card className={classes.card} variant="outlined">
                     <CardContent className={classes.cardContent}>
-                    <Typography  variant="h6">
-                    <div>Review ID: {review.id}</div>
-                    </Typography>
-                    <Divider />
                     <Rating name="read-only" value={review.reviewstars} precision={0.1} readOnly />
                     
-                    <Typography variant="body2"> 
-                  <div><Typography className={classes.reviewDisplay}>Description:</Typography> </div>
-                  <div >&nbsp;&nbsp;&nbsp;&nbsp;{review.reviewDescription}</div>
-                  <br></br>
+                    <Typography variant="body1"> 
+                  <div ><Typography className={classes.reviewDisplay} variant = "h6">Description:</Typography> </div>
+                  <div >{review.reviewDescription}</div>
                   <div><Typography className={classes.reviewDisplay}>Date: {review.reviewDate} </Typography></div>
                   <div><Typography className={classes.reviewDisplay}>Status: {review.reviewStatus} </Typography></div>
                     </Typography>

@@ -12,7 +12,7 @@ import Typography from '@material-ui/core/Typography';
 import { withStyles } from "@material-ui/core/styles";
 import CssBaseline from '@material-ui/core/CssBaseline';
 import BlockIcon from '@material-ui/icons/Block';
-import { CardHeader, Fab } from "@material-ui/core";
+import { CardHeader, Divider, Fab } from "@material-ui/core";
 import Snackbar from '@material-ui/core/Snackbar';
 import Chip from '@material-ui/core/Chip';
 import BlockRoundedIcon from '@material-ui/icons/BlockRounded';
@@ -42,6 +42,10 @@ const useStyles = theme => ({
     display: 'flex',
     flexDirection: 'column',
   },
+  spacingTop:{
+    marginTop: theme.spacing(2),
+    fontStyle: "italic",
+  }
 });
 
 class RejectedApplicantList extends Component {
@@ -64,7 +68,7 @@ class RejectedApplicantList extends Component {
         DataService.getUserUseRefreshToken();
           };
       console.log(e);
-      window.location.reload();
+      window.location.href='/Login';
     });
   }
 
@@ -107,9 +111,9 @@ class RejectedApplicantList extends Component {
                     <Typography>
                     {user.reviews.map(r =>
                     <div key = {r.id}>
-                      <div>ID: {r.id}</div>
-                      <div>Review Description:</div>
+                      <div className={classes.spacingTop}>Review Description:</div>
                        <div>  {r.reviewDescription}</div>
+                       <Divider/>
                       </div>)}
                     </Typography>
                   </CardContent>

@@ -4,7 +4,7 @@ import axios from "axios";
 const STUDENT_API_BASE_URL = "http://localhost:8080/api/user";
 
 function token(){
-  let accessToken = localStorage.getItem('user');
+  let accessToken = localStorage.getItem('userRefreshToken');
   return {
     headers:{Authorization:`Bearer ${accessToken}`,}
   };

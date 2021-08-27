@@ -3,7 +3,7 @@ import axios from "axios";
 const STUDENT_API_BASE_URL = "http://localhost:8080/api/webadmin";
 
 function token(){
-  let accessToken = localStorage.getItem('user');
+  let accessToken = localStorage.getItem('userRefreshToken');
   return {
     headers:{Authorization:`Bearer ${accessToken}`,}
   };
@@ -35,6 +35,9 @@ class DataService {
   }
   getBlockedApplicants() {
     return axios.get(STUDENT_API_BASE_URL+"/list/applicant/block",token());
+  }
+  getSuspiciousApplicants() {
+    return axios.get(STUDENT_API_BASE_URL+"/list/applicant/reported",token());
   }
   updateApplicant(id, reviewStatus) {
     return axios.get(STUDENT_API_BASE_URL+"/list/applicant/"+id+"/"+reviewStatus,token());

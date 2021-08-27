@@ -47,6 +47,10 @@ const useStyles = theme => ({
     marginBottom: theme.spacing(1),
     marginLeft:theme.spacing(2),
     display: 'flex'
+  },
+  spacingTop:{
+    marginTop: theme.spacing(2),
+    fontStyle: "italic",
   }
 });
 
@@ -71,7 +75,7 @@ class ApprovedApplicantList extends Component {
         DataService.getUserUseRefreshToken();
           };
       console.log(e);
-      window.location.reload();
+      window.location.href='/Login';
     });
   }
 
@@ -111,14 +115,12 @@ class ApprovedApplicantList extends Component {
                     title={<Typography gutterBottom variant="h5" component="h2">
                       {user.firstName} {user.lastName}
                     </Typography>}/>
-                    <Divider/>
                     <CardContent className={classes.cardContent}>
-                    <Typography variant="body2">
+                    <Typography>
                     {user.reviews.map(r =>
                     <div key = {r.id}>
-                      <div><Typography className={classes.reviewDisplay}>Review Id: {r.id} </Typography></div>
-                      <div>Review Description: </div>
-                       <div><Typography className={classes.reviewDescription} variant="body2">{r.reviewDescription}</Typography></div>
+                      <div className={classes.spacingTop} >Review Description:</div>
+                       <div>  {r.reviewDescription}</div>
                        <Divider/>
                       </div>)}
                     </Typography>

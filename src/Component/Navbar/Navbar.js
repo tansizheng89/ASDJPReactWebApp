@@ -8,6 +8,7 @@ import RejectedReviewList from '../AdminAccess/RejectedReviewList'
 import ReportedReviewList from '../AdminAccess/ReportedReviewList'
 import ApprovedApplicantList from '../AdminAccess/ApprovedApplicantList'
 import RejectedApplicantList from '../AdminAccess/BlockedApplicantList'
+import SuspiciousApplicantList from '../AdminAccess/SuspiciousApplicantList'
 import AllJobsList from '../UserAccess/AllJobsList'
 import AllBookmarkJobList from '../UserAccess/AllBookmarkJobList'
 import AllViewedJobsList from '../UserAccess/AllViewedJobsList'
@@ -102,6 +103,8 @@ export default function Navbar() {
                 <NavDropdown.Item href="/ApprovedApplicantList" id="nav-items" >Approved Applicants</NavDropdown.Item>
                 <NavDropdown.Divider />
                 <NavDropdown.Item href="/RejectedApplicantList" id="nav-items" >Blocked Applicant</NavDropdown.Item>
+                <NavDropdown.Divider />
+                <NavDropdown.Item href="/SuspiciousApplicantList" id="nav-items" >Suspicious Applicant</NavDropdown.Item>
               </NavDropdown>
               : ""}
 
@@ -139,6 +142,7 @@ export default function Navbar() {
         <Route exact path='/ReportedReviewList' component={ReportedReviewList} />
         <Route exact path='/ApprovedApplicantList' component={ApprovedApplicantList} />
         <Route exact path='/RejectedApplicantList' component={RejectedApplicantList} />
+        <Route exact path='/SuspiciousApplicantList' component={SuspiciousApplicantList} />
         <Route exact path='/AllJobsList' component={AllJobsList} />
         <Route exact path='/AllViewedJobsList' component={AllViewedJobsList} />
         <Route exact path='/AllBookmarkJobList' component={AllBookmarkJobList} />

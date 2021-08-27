@@ -1,19 +1,21 @@
 import React, { Component } from "react";
 import DataService from "../../Services/WebAdminService";
+import { Link } from "react-router-dom";
 import Container from '@material-ui/core/Container';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
+import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from "@material-ui/core/styles";
 import CssBaseline from '@material-ui/core/CssBaseline';
+import BlockIcon from '@material-ui/icons/Block';
+import { CardHeader, Divider, Fab } from "@material-ui/core";
 import Snackbar from '@material-ui/core/Snackbar';
-import Rating from '@material-ui/lab/Rating';
-import Divider from '@material-ui/core/Divider';
 import Chip from '@material-ui/core/Chip';
-import CheckCircleRoundedIcon from '@material-ui/icons/CheckCircleRounded';
+import WarningIcon from '@material-ui/icons/Warning';
 
 const useStyles = theme => ({
   icon: {
@@ -40,26 +42,27 @@ const useStyles = theme => ({
     display: 'flex',
     flexDirection: 'column',
   },
-  reviewDisplay:{
-    marginTop: theme.spacing(1),
-    display: 'flex'
+  spacingTop:{
+    marginTop: theme.spacing(2),
+    fontStyle: "italic",
   }
 });
 
-class ApprovedReviewList extends Component {
+class SuspiciousApplicantList extends Component {
     constructor(props) {
       super(props);
-      this.rejectReview = this.rejectReview.bind(this);
+      this.approveApplicant = this.approveApplicant.bind(this);
+      this.rejectApplicant = this.rejectApplicant.bind(this);
       
       this.state = {
-        reviews: [],
+        applicants: [],
         open:false
       };
     }
 
   componentDidMount() {
-    DataService.getApprovedReviews().then((res) =>{
-      this.setState({reviews:res.data});
+    DataService.getSuspiciousApplicants().then((res) =>{
+      this.setState({applicants:res.data});
       this.setState({open:false});
     }).catch(e => {
       if (e.response.status === 403) {
@@ -70,14 +73,14 @@ class ApprovedReviewList extends Component {
     });
   }
 
-  rejectReview(id){
+  approveApplicant(id){
 
-    DataService.updateReview(
-      id,"Blocked"            
+    DataService.updateApplicant(
+      id,"Approve"            
   )
       .then(response => {
           console.log(response.data);
-          this.setState({open:true})
+          this.setState({open:true});
           //this.props.history.push('ApprovedReviewList')
           window.location.reload();
       })
@@ -86,45 +89,68 @@ class ApprovedReviewList extends Component {
       });
   }
 
+  rejectApplicant(id){
+
+    DataService.updateApplicant(
+      id,"Blocked"            
+  )
+      .then(response => {
+          console.log(response.data);
+          this.setState({open:true})
+          //this.props.history.push('ApprovedReviewList')
+          window.location.reload();
+          
+      })
+      .catch(e => {
+          console.log(e);
+      });
+  }
+
   render(){
-    const { classes } = this.props;
     const{reviews} = this.state;
+    const { classes } = this.props;
     return(
       <div>
-        <Container className={classes.cardGrid} maxWidth="md">
+        
+      <Container className={classes.cardGrid} maxWidth="md">
       <CssBaseline />
         <div className={classes.paper}>
-        <Typography variant="h3">Approved Reviews&nbsp;&nbsp;<CheckCircleRoundedIcon/></Typography>
+        <Typography variant="h3">Suspicious Applicant&nbsp;&nbsp;<WarningIcon/></Typography>
         <br/>
           <Grid container spacing={4}>
-            {this.state.reviews.map(((review ) => (
-              <Grid item key={(review.id)} xs={12} sm={6} md={4}>
+            {this.state.applicants.map((user) => (
+              <Grid item key={user.id} xs={12} sm={6} md={4}>
                 <Card className={classes.card} variant="outlined">
+                    <CardHeader
+                    title={<Typography gutterBottom variant="h5" component="h2">
+                      {user.firstName} {user.lastName}
+                    </Typography>}/>
                     <CardContent className={classes.cardContent}>
-
-                    <Rating name="read-only" value={review.reviewstars} precision={0.1} readOnly /> 
-                    
-                    <Typography variant="body1"> 
-                  <div ><Typography className={classes.reviewDisplay} variant = "h6">Description:</Typography> </div>
-                  <div >{review.reviewDescription}</div>
-                  <br></br>
-                  <div><Typography className={classes.reviewDisplay}>Date: {review.reviewDate} </Typography></div>
-                  <div><Typography className={classes.reviewDisplay}>Status: {review.reviewStatus} </Typography></div>
+                    <Typography>
+                    {user.reviews.map(r =>
+                    <div key = {r.id}>
+                      <div className={classes.spacingTop}>Review Description:</div>
+                       <div>  {r.reviewDescription}</div>
+                       <Divider/>
+                      </div>)}
                     </Typography>
                   </CardContent>
                   <CardActions>
-                    <Button size="small" color="primary" onClick = {(e)=>this.rejectReview(review.id)}>
-                    <Chip label="Reject"color ="secondary" ></Chip>
+                    <Button size="small" color="primary" onClick = {(e)=>this.approveApplicant(user.id)}>
+                    <Chip label="Approve"color ="primary" ></Chip>
+                    </Button>
+                    <Button size="small" color="primary" onClick = {(e)=>this.rejectApplicant(user.id)}>
+                    <Chip label="Block"color ="secondary" ></Chip>
                     </Button>
                     <Snackbar
                       anchorOrigin={ { vertical: 'top', horizontal: 'center' } }
                       open={this.state.open}
-                      message="You have successfully reject review" 
+                      message="You have successfully approved" 
                     />
                   </CardActions>
                 </Card>
               </Grid>
-            )))}           
+            ))}
           </Grid>
           </div>
         </Container>
@@ -136,5 +162,4 @@ class ApprovedReviewList extends Component {
   }
 
 }
-
-export default withStyles(useStyles,{withTheme:true})(ApprovedReviewList);
+export default withStyles(useStyles,{withTheme:true})(SuspiciousApplicantList);
