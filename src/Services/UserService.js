@@ -1,7 +1,12 @@
 import axios from "axios";
 
-//const STUDENT_API_BASE_URL = "http://localhost:8080/api/webadmin";
+//For localhost connection
+const STUDENT_API_ROOT_URL = "http://localhost:8080/api";
 const STUDENT_API_BASE_URL = "http://localhost:8080/api/user";
+
+//For cloud connection
+// const STUDENT_API_ROOT_URL = "http://:8080/api";
+// const STUDENT_API_BASE_URL = "http://:8080/api/user";
 
 function token(){
   let accessToken = localStorage.getItem('userRefreshToken');
@@ -16,7 +21,7 @@ function refreshToken(){
 }
 
 function processRefreshToken(){
-  axios.get("http://localhost:8080/api/user/refreshtoken",refreshToken()).then(response=>{
+  axios.get(STUDENT_API_BASE_URL+"/refreshtoken",refreshToken()).then(response=>{
       localStorage.setItem("user", response.data.access_token);
       localStorage.setItem("userRefreshToken", response.data.refresh_token);
     });
@@ -84,7 +89,7 @@ class StudentDataService {
 
     formData.append("file", file);
 
-    return axios.post("http://localhost:8080/api/file/upload", formData, {
+    return axios.post(STUDENT_API_ROOT_URL+"/file/upload", formData, {
       headers: {
         "Content-Type": "multipart/form-data",
       },
@@ -93,11 +98,11 @@ class StudentDataService {
   }
 
   getFiles() {
-    return axios.get("http://localhost:8080/api/file/files",token());
+    return axios.get(STUDENT_API_ROOT_URL+"/file/files",token());
   }
 
   getAvatarFiles(id) {
-    return axios.get("http://localhost:8080/api/user/applicant/avatarweb/"+id,token());
+    return axios.get(STUDENT_API_ROOT_URL+"/user/applicant/avatarweb/"+id,token());
   }
 
 }

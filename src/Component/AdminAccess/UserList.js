@@ -81,9 +81,9 @@ class UserList extends Component {
         if (e.response.status === 403) {
           UserDataService.getUserUseRefreshToken();
             // this.refreshList();
-            this.componentDidMount();
-            console.log(e);
         }
+        console.log(e);
+       window.location.href='/Login';
       });
   }
 
