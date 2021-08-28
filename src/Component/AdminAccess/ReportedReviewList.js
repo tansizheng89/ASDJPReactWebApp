@@ -13,7 +13,7 @@ import Snackbar from '@material-ui/core/Snackbar';
 import Rating from '@material-ui/lab/Rating';
 import Divider from '@material-ui/core/Divider';
 import Chip from '@material-ui/core/Chip';
-import CheckCircleRoundedIcon from '@material-ui/icons/CheckCircleRounded';
+import WarningIcon from '@material-ui/icons/Warning';
 
 const useStyles = theme => ({
   icon: {
@@ -111,7 +111,7 @@ class ReportedReviewList extends Component {
         <Container className={classes.cardGrid} maxWidth="md">
       <CssBaseline />
         <div className={classes.paper}>
-        <Typography variant="h3">Reported Reviews&nbsp;&nbsp;<CheckCircleRoundedIcon/></Typography>
+        <Typography variant="h3">Reported Reviews&nbsp;&nbsp;<WarningIcon/></Typography>
         <br/>
           <Grid container spacing={4}>
             {this.state.reviews.map(((review ) => (
