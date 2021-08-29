@@ -1,12 +1,12 @@
 import axios from "axios";
 
 //For localhost connection
-const WEBUSERJOB_API_ROOT_URL = "http://localhost:8080/api";
-const WEBUSERJOB_API_BASE_URL = "http://localhost:8080/api/review/";
+// const WEBUSERJOB_API_ROOT_URL = "http://localhost:8080/api";
+// const WEBUSERJOB_API_BASE_URL = "http://localhost:8080/api/review/";
 
 //For cloud connection
-// const WEBUSERJOB_API_ROOT_URL = "http://:8080/api";
-// const WEBUSERJOB_API_BASE_URL = "http://:8080/api/review/";
+const WEBUSERJOB_API_ROOT_URL = "http://54.81.227.122:8080/webapp/api";
+const WEBUSERJOB_API_BASE_URL = "http://54.81.227.122:8080/webapp/api/review/";
 
 function token(){
   let accessToken = localStorage.getItem('userRefreshToken');

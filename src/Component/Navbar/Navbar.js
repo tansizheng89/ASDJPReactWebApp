@@ -122,9 +122,9 @@ export default function Navbar() {
               </NavDropdown>
               : ""}
             {(crole === '[ADMIN]') ? <Nav.Link href="/UserList" id="nav-dropdown">All Users</Nav.Link> : ""}
-            {crole == null ? <Nav.Link href="/CreateUser" id="nav-dropdown">Register</Nav.Link> : ""}
+            {/* {crole == null ? <Nav.Link href="/CreateUser" id="nav-dropdown">Register</Nav.Link> : ""} */}
             {crole == null ? <Nav.Link href="/Login" id="nav-dropdown">Login</Nav.Link> : ""}
-            {crole !== null ? <Nav.Link href="/EditUser" id="nav-dropdown">Edit Profile</Nav.Link> : ""}
+            {/* {crole !== null ? <Nav.Link href="/EditUser" id="nav-dropdown">Edit Profile</Nav.Link> : ""} */}
             {crole !== null ? <Nav.Link href="/logout" id="nav-dropdown">Logout</Nav.Link> : ""}
            &nbsp;&nbsp;&nbsp;&nbsp;
             {cimage!==null ? <Avatar alt="images" src={`data:image/jpeg;base64, ${cimage}`}/> :""}
