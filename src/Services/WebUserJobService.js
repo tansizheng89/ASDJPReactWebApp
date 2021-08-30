@@ -5,8 +5,8 @@ import axios from "axios";
 // const WEBUSERJOB_API_BASE_URL = "http://localhost:8080/api/webuser/";
 
 //For cloudhost connection
-const WEBUSERJOB_API_ROOT_URL = "http://54.81.227.122:8080/webapp/api";
-const WEBUSERJOB_API_BASE_URL = "http://54.81.227.122:8080/webapp/webuser/";
+const WEBUSERJOB_API_ROOT_URL = "http://54.81.148.245:8080/webapp/api";
+const WEBUSERJOB_API_BASE_URL = "http://54.81.148.245:8080/webapp/webuser/";
 
 function token(){
   let accessToken = localStorage.getItem('userRefreshToken');

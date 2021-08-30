@@ -146,8 +146,6 @@ class UserList extends Component {
                   <Card className={classes.card} variant="outlined">
                     <CardContent className={classes.cardContent}>
                       <Typography gutterBottom variant="h6">
-                        <div>ID:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {user.id}</div>
-                        <Divider/>
                         <div>Name: &nbsp;{user.firstName} {user.lastName}</div>
                         <Divider/>
                         <div>Role:&nbsp;&nbsp;&nbsp;&nbsp;{user.roles}</div>
